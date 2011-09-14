@@ -1,4 +1,4 @@
 ############### installation ############
 
 bundle install
-rake db:bootstrap
+rake db:setup

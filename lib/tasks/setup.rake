@@ -1,6 +1,6 @@
 namespace :db do
   desc "rebuilds the database and prepares sample data"
-  task :bootstrap => :environment do
+  task :setup => :environment do
     raise "this task should not be run in production" if Rails.env.production?
     puts "dropping the database ................"
     Rake::Task["db:drop"].invoke
