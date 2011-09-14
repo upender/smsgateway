@@ -1,0 +1,32 @@
+<% title "User" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+<p>
+  <strong>Mobile Number:</strong>
+  <%= @user.mobile_number %>
+</p>
+<p>
+  <strong>Address:</strong>
+  <%= @user.address %>
+</p>
+<p>
+  <strong>City:</strong>
+  <%= @user.city %>
+</p>
+<p>
+  <strong>State:</strong>
+  <%= @user.state %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_user_path(@user) %> |
+  <%= link_to "Destroy", @user, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", users_path %>
+</p>

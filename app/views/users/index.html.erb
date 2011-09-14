@@ -1,0 +1,40 @@
+<% title "Listing all users" %>
+<% if @users.blank? %>
+    <h3><i>There are no users yet</i></h3>
+<% else %>
+    <%= form_tag(send_sms_users_path) do %>
+        <table id="main_table" class="tablesorter">
+          <thead>
+          <tr>
+            <th><%= check_all %> check/uncheck</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile Number</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% for user in @users %>
+              <tr class="<%=cycle('even', 'odd')%>">
+                <td><%= check_box_tag "user_ids[]", user.id,false,{:id=>"data_#{user.id}"} %></td>
+                <td><%= user.name %></td>
+                <td><%= user.email %></td>
+                <td><%= user.mobile_number %></td>
+                <td><%= user.address %></td>
+                <td><%= user.city %></td>
+                <td><%= user.state %></td>
+                <td><%= link_to "Show", user %> |
+                  <%= link_to "Edit", edit_user_path(user) %> |
+                  <%= link_to "Destroy", user, :confirm => 'Are you sure?', :method => :delete %>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <div align="left"><%= submit_tag 'Send sms' %> </div>
+    <% end %>
+<% end %>
+
+<p><%= link_to "Create New User", new_user_path %></p>
